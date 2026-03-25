@@ -41,15 +41,15 @@ VOLUME /export
 
 # Plugin installation
 WORKDIR /app
-RUN curl -L https://git.sr.ht/~foosoft/anki-connect/archive/${ANKICONNECT_VERSION}.tar.gz | \
-    tar -xz && \
-    mv anki-connect-${ANKICONNECT_VERSION} anki-connect
-RUN chown -R anki:anki /app/anki-connect/plugin && \
-    ln -s -f /app/anki-connect/plugin /data/addons21/AnkiConnectDev
+# RUN curl -L https://git.sr.ht/~foosoft/anki-connect/archive/${ANKICONNECT_VERSION}.tar.gz | \
+#     tar -xz && \
+#     mv anki-connect-${ANKICONNECT_VERSION} anki-connect
+# RUN chown -R anki:anki /app/anki-connect/plugin && \
+#     ln -s -f /app/anki-connect/plugin /data/addons21/AnkiConnectDev
 
-# Edit AnkiConnect config
-RUN jq '.webBindAddress = "0.0.0.0"' /data/addons21/AnkiConnectDev/config.json > tmp_file && \
-    mv tmp_file /data/addons21/AnkiConnectDev/config.json
+# # Edit AnkiConnect config
+# RUN jq '.webBindAddress = "0.0.0.0"' /data/addons21/AnkiConnectDev/config.json > tmp_file && \
+#     mv tmp_file /data/addons21/AnkiConnectDev/config.json
 
 USER anki
 
