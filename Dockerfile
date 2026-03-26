@@ -4,7 +4,7 @@ ARG ANKI_VERSION=25.02.4
 ARG QT_VERSION=6
 
 RUN apt update && apt install --no-install-recommends -y \
-    wget zstd mpv locales curl git ca-certificates python3 novnc libxcb-xinerama0 libxcb-cursor0 libnss3 \
+    wget zstd mpv locales curl git ca-certificates python3 python3-pip novnc libxcb-xinerama0 libxcb-cursor0 libnss3 \
         libxcomposite-dev libxdamage-dev libxtst-dev libxkbcommon-dev libxkbfile-dev
 RUN useradd -m anki
 
@@ -27,7 +27,8 @@ RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
     update-locale LANG=en_US.UTF-8
 ENV LANG=en_US.UTF-8 \ LANGUAGE=en_US \ LC_ALL=en_US.UTF-8
 
-RUN apt-get autoremove -y && \
+RUN pip3 install --no-cache-dir websockify==0.12.0 && \
+    apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
 # Anki volumes
