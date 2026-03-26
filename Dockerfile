@@ -4,7 +4,7 @@ ARG ANKI_VERSION=25.02.4
 ARG QT_VERSION=6
 
 RUN apt update && apt install --no-install-recommends -y \
-    wget zstd mpv locales curl git ca-certificates novnc websockify libxcb-xinerama0 libxcb-cursor0 libnss3 \
+    wget zstd mpv locales curl git ca-certificates python3 novnc libxcb-xinerama0 libxcb-cursor0 libnss3 \
         libxcomposite-dev libxdamage-dev libxtst-dev libxkbcommon-dev libxkbfile-dev
 RUN useradd -m anki
 
