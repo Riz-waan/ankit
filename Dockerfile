@@ -27,7 +27,7 @@ RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
     update-locale LANG=en_US.UTF-8
 ENV LANG=en_US.UTF-8 \ LANGUAGE=en_US \ LC_ALL=en_US.UTF-8
 
-RUN pip3 install --no-cache-dir websockify==0.12.0 && \
+RUN pip3 install --no-cache-dir --break-system-packages websockify==0.12.0 && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
